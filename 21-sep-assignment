@@ -1,37 +1,34 @@
-#include<stdio.h>
-#include<string.h>
-
-void main()
+#include <stdio.h>
+int main()
 {
-    int i,j,len,k=0;
-    char str[100],rstr[100],vowel[100],consonant[100];
-    printf("enter the string:\n");
-    gets(str);
-    len=strlen(str);
-    for(i=0;i<len;i++)
+    int n1, n2, i, gcd;
+    printf("Enter two integers: ");
+    scanf("%d %d", &n1, &n2);
+    for(i=1; i <= n1 && i <= n2; ++i)
     {
-        if(str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='o' || str[i]=='u' )
-        {
-          vowel[i]=str[i];
-        }
-        else
-        {
-         consonant[k]=str[i];
-         k++;
-        }
+        // Checks if i is factor of both integers
+        if(n1%i==0 && n2%i==0)
+            gcd = i;
     }
-    i=1;
-    while(str[i]!='\0')
+    printf("G.C.D of %d and %d is %d", n1, n2, gcd);
+    return 0;
+}
+
+/* using recursive method */
+
+#include <stdio.h>
+int main()
+{
+    int n1, n2;
+    
+    printf("Enter two positive integers: ");
+    scanf("%d %d",&n1,&n2);
+    while(n1!=n2)
     {
-        if(vowel[i]!='a' || vowel[i]!='e' || vowel[i]!='i' || vowel[i]!='o' || vowel[i]!='u')
-        {
-            rstr[i]=consonant[k];
-            k--;
-        }
+        if(n1 > n2)
+            n1 -= n2;
         else
-        {
-            rstr[i]=vowel[i];
-        }
-        printf("%c",rstr[i]);
-        i++;
+            n2 -= n1;
     }
+    printf("GCD = %d",n1);
+    return 0;
